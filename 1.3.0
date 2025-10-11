@@ -1,0 +1,5 @@
+Requirement already satisfied: pyyaml in d:\dev\envs\qrucible_env_py312\lib\site-packages (6.0.3)
+Requirement already satisfied: python-dotenv in d:\dev\envs\qrucible_env_py312\lib\site-packages (1.1.1)
+Requirement already satisfied: tqdm in d:\dev\envs\qrucible_env_py312\lib\site-packages (4.67.1)
+Requirement already satisfied: joblib in d:\dev\envs\qrucible_env_py312\lib\site-packages (1.5.2)
+Requirement already satisfied: colorama in d:\dev\envs\qrucible_env_py312\lib\site-packages (from tqdm) (0.4.6)

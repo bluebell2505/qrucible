@@ -1,0 +1,6 @@
+Collecting py3Dmol
+  Using cached py3dmol-2.5.3-py2.py3-none-any.whl.metadata (2.1 kB)
+Requirement already satisfied: pillow in d:\dev\envs\qrucible_env_py312\lib\site-packages (11.3.0)
+Using cached py3dmol-2.5.3-py2.py3-none-any.whl (7.2 kB)
+Installing collected packages: py3Dmol
+Successfully installed py3Dmol-2.5.3

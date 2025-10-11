@@ -1,0 +1,8 @@
+Requirement already satisfied: pytest in d:\dev\envs\qrucible_env_py312\lib\site-packages (8.4.2)
+Requirement already satisfied: pytest-cov in d:\dev\envs\qrucible_env_py312\lib\site-packages (7.0.0)
+Requirement already satisfied: colorama>=0.4 in d:\dev\envs\qrucible_env_py312\lib\site-packages (from pytest) (0.4.6)
+Requirement already satisfied: iniconfig>=1 in d:\dev\envs\qrucible_env_py312\lib\site-packages (from pytest) (2.1.0)
+Requirement already satisfied: packaging>=20 in d:\dev\envs\qrucible_env_py312\lib\site-packages (from pytest) (25.0)
+Requirement already satisfied: pluggy<2,>=1.5 in d:\dev\envs\qrucible_env_py312\lib\site-packages (from pytest) (1.6.0)
+Requirement already satisfied: pygments>=2.7.2 in d:\dev\envs\qrucible_env_py312\lib\site-packages (from pytest) (2.19.2)
+Requirement already satisfied: coverage>=7.10.6 in d:\dev\envs\qrucible_env_py312\lib\site-packages (from coverage[toml]>=7.10.6->pytest-cov) (7.10.7)
