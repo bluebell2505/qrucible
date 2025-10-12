@@ -1,0 +1,156 @@
+project:
+  name: Qrucible
+  version: 0.1.0
+  description: Hybrid Quantum-Classical ML for Drug Discovery
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  interim_dir: data/interim
+  sources:
+    chembl:
+      enabled: true
+      target: EGFR
+      activity_threshold: 6.5
+      max_compounds: 10000
+    bindingdb:
+      enabled: false
+      target: null
+    zinc:
+      enabled: false
+      subset: lead-like
+  preprocessing:
+    remove_duplicates: true
+    remove_salts: true
+    neutralize: true
+    standardize: true
+    remove_mixtures: true
+    min_heavy_atoms: 6
+    max_heavy_atoms: 50
+features:
+  descriptors_2d:
+  - MolWt
+  - LogP
+  - TPSA
+  - NumHDonors
+  - NumHAcceptors
+  - NumRotatableBonds
+  - NumAromaticRings
+  - FractionCsp3
+  - MolMR
+  - BalabanJ
+  descriptors_3d:
+    enabled: false
+    conformer_generation: true
+  fingerprints:
+    morgan:
+      enabled: true
+      radius: 2
+      n_bits: 2048
+    maccs:
+      enabled: true
+    topological:
+      enabled: false
+  quantum_features:
+    enabled: false
+classical_models:
+  random_forest:
+    enabled: true
+    n_estimators: 200
+    max_depth: 20
+    min_samples_split: 5
+    min_samples_leaf: 2
+    random_state: 42
+    n_jobs: -1
+  gradient_boosting:
+    enabled: true
+    algorithm: xgboost
+    n_estimators: 200
+    learning_rate: 0.1
+    max_depth: 6
+    subsample: 0.8
+    colsample_bytree: 0.8
+    random_state: 42
+  ensemble:
+    enabled: true
+    method: weighted_average
+    weights:
+    - 0.5
+    - 0.5
+training:
+  test_size: 0.2
+  validation_size: 0.1
+  random_state: 42
+  cv_folds: 5
+  metrics:
+  - r2
+  - mae
+  - rmse
+  - pearson
+explainability:
+  shap:
+    enabled: true
+    max_samples: 1000
+    algorithm: tree
+  lime:
+    enabled: true
+    n_samples: 5000
+  uncertainty:
+    enabled: true
+    confidence_threshold: 0.7
+ranking:
+  multi_objective:
+    binding_affinity:
+      weight: 0.4
+      direction: maximize
+    drug_likeness:
+      weight: 0.2
+      direction: maximize
+      rules: lipinski
+    admet:
+      weight: 0.2
+      direction: maximize
+    confidence:
+      weight: 0.2
+      direction: maximize
+  top_n_candidates: 20
+quantum:
+  enabled: false
+  backend:
+    simulator: qasm_simulator
+    real_hardware: false
+    device_name: ibm_brisbane
+  algorithms:
+    vqe:
+      optimizer: SLSQP
+      max_iterations: 1000
+      convergence_threshold: 1.0e-06
+    qaoa:
+      p_layers: 3
+      optimizer: COBYLA
+  error_mitigation:
+    enabled: true
+    method: readout
+active_learning:
+  enabled: false
+  iterations: 3
+  selection_strategy: uncertainty
+  batch_size: 10
+  retrain_interval: 1
+visualization:
+  plots_dir: results/figures
+  dpi: 300
+  format: png
+  dashboard:
+    enabled: false
+    framework: streamlit
+    port: 8501
+results:
+  models_dir: results/models
+  reports_dir: results/reports
+  benchmarks_dir: results/benchmarks
+  save_predictions: true
+  save_shap_values: true
+logging:
+  level: INFO
+  file: qrucible.log
+  console: true

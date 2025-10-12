@@ -16,5 +16,3 @@ Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
 Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
 Downloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
 Installing collected packages: pytz, tzdata, six, python-dateutil, pandas
-
-Successfully installed pandas-2.3.3 python-dateutil-2.9.0.post0 pytz-2025.2 six-1.17.0 tzdata-2025.2
