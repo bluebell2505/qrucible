@@ -1,0 +1,13 @@
+{
+  "molecule": "H2",
+  "bond_length": 0.735,
+  "vqe_energy_hartree": -1.857274510833446,
+  "exact_energy_hartree": -1.137283,
+  "error_hartree": 0.719991510833446,
+  "relative_error": 63.30803422133682,
+  "num_qubits": 2,
+  "num_parameters": 12,
+  "optimizer_iterations": 197,
+  "optimizer_success": true,
+  "success": true
+}
