@@ -2091,7 +2091,7 @@ def main():
             if st.button("✓ Send to Quantum →", type="primary", key="send_to_quantum_btn"):
                 st.session_state.session_config['top_candidates'] = top_10
                 st.success("✓ Ready for quantum!")
-                st.balloons()
+                # st.balloons()
     
     # Tab 3: Quantum Optimization
     with tab3:
