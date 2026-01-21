@@ -1,18 +1,214 @@
-# Qrucible
+# 🧪 Qrucible — Quantum‑Validated Molecular Screening Platform
 
-**Hybrid Quantum-Classical Machine Learning Framework for Molecular Candidate Optimization in Drug Discovery**
+**Qrucible** is a real‑world–aligned, decision‑support system for **early‑stage drug discovery**.  
+It combines **classical machine learning (QSAR/SAR)** with **physics‑grounded quantum feasibility checks** to reduce false positives before wet‑lab synthesis.
 
-## Overview
+> **Core idea:**  
+> _Use ML to screen fast, then use quantum methods as a mandatory feasibility gate — not as a novelty._
 
-Qrucible is a cutting-edge framework that combines classical machine learning with quantum computing to accelerate early-stage drug discovery. By leveraging quantum computation's parallelism alongside classical ML's scalability, the system enables faster and more accurate molecular candidate screening and property optimization.
+---
 
-## Features
+## 🔍 Why Qrucible Exists:
 
-- **Classical ML Screening**: Rapid screening using Random Forest and Gradient Boosting
-- **Quantum Optimization**: VQE and QAOA for molecular energy calculations
-- **Active Learning**: Intelligent feedback loop between quantum and classical models
-- **Explainability**: SHAP and LIME for interpretable predictions
-- **Multi-Objective Ranking**: Optimized candidate selection based on multiple criteria
+In real pharmaceutical pipelines:
+
+- ML/QSAR models generate **many false positives**
+    
+- Chemically implausible molecules survive virtual screening
+    
+- Wet‑lab synthesis and assays are **expensive and slow**
+    
+- Physics‑based validation is often skipped due to cost
+    
+
+**Qrucible solves this gap** by inserting a **quantum feasibility gate** between ML screening and wet‑lab experiments.
+
+---
+
+## 🎯 What Qrucible Does:
+
+- Accepts **researcher‑provided molecular libraries**
+    
+- Performs **classical ML screening** for target properties
+    
+- Applies **medicinal chemistry rule filters**
+    
+- Uses **quantum algorithms to reject physically implausible candidates**
+    
+- Outputs a **short, synthesis‑ready molecule list**
+
+---
+
+## 🧠 High‑Level Pipeline (Version 4)
+
+```
+Researcher Molecules
+        ↓
+Classical ML Screening (QSAR / SAR)
+        ↓
+Chemical Feasibility Filters
+        ↓
+Quantum Feasibility Gate (YES / NO)
+        ↓
+Shortlist for Wet‑Lab Synthesis
+
+```
+---
+
+## 🧬 Detailed Workflow
+
+### **STEP 0 — Researcher Input**
+
+- Existing molecules (hits, analogs, fragments)
+    
+- Target property objectives (e.g., pIC50)
+    
+- Optional target context
+    
+
+📌 _Matches real pharma workflows_
+
+---
+
+### **STEP 1 — Classical ML Screening**
+
+- Molecular descriptors + fingerprints (RDKit)
+    
+- Models: Random Forest, XGBoost (optionally GNNs)
+    
+- Outputs:
+    
+    - Predicted activity
+        
+    - Prediction uncertainty
+        
+    - Ranking
+        
+
+📌 _High‑throughput, noisy by design — just like industry ML_
+
+---
+
+### **STEP 2 — Chemical Feasibility Filters**
+
+- Lipinski / Veber rules
+    
+- Toxic or reactive substructures
+    
+- Extreme phys‑chem removal
+    
+- Simple synthetic accessibility heuristics
+    
+
+📌 _Medicinal chemistry sanity check_
+
+---
+
+### **STEP 3 — Quantum Feasibility Gate (Core Contribution)**
+
+Quantum methods are used **only for decision‑critical validation**, not ranking.
+
+**Quantum checks include:**
+
+- Electronic stability
+    
+- Ground‑state energy consistency
+    
+- Conformational feasibility
+    
+- Detection of unphysical energy landscapes
+    
+
+**Decision logic:**
+
+- ❌ Reject if physically implausible
+    
+- ✅ Pass if feasible
+    
+
+📌 _This step is non‑removable and justifies quantum usage_
+
+---
+
+### **STEP 4 — Final Output**
+
+- 10–30 shortlisted molecules
+    
+- For each candidate:
+    
+    - ML score + uncertainty
+        
+    - Quantum pass/fail
+        
+    - Rejection rationale (if any)
+        
+
+📌 _Direct input to wet‑lab synthesis_
+
+---
+
+## ⚛️ Role of Quantum Computing:
+
+- Physics‑based feasibility validation
+    
+- False‑positive rejection
+    
+- Pre‑synthesis decision making
+
+---
+
+## 🧰 Tech Stack
+
+### **Classical ML**
+
+- Python 3.10
+    
+- RDKit (conda‑forge)
+    
+- NumPy, Pandas
+    
+- Scikit‑learn
+    
+- XGBoost
+    
+- Joblib
+    
+
+### **Quantum**
+
+- Qiskit / PennyLane
+    
+- Quantum simulators (NISQ‑compatible)
+    
+- VQE / QAOA (small systems only)
+    
+
+### **Data**
+
+- ChEMBL (primary source)
+    
+- Curated target‑specific datasets
+    
+- Descriptor + fingerprint representations
+
+---
+
+## 🚀 Intended Use Case
+
+Qrucible is designed for:
+
+- **Hit‑to‑lead optimization**
+    
+- **SAR refinement**
+    
+- **Reducing wet‑lab failures**
+    
+- **Academic + industry‑aligned research**
+    
+
+It is **not** intended as a fully autonomous drug discovery system.
+
+---
 
 ## Project Structure
 
@@ -48,142 +244,17 @@ qrucible/
    ```bash
    python scripts/train_classical.py
    ```
-
-## Development Phases
-
-- **Phase 1**: Classical ML Pipeline (Current)
-- **Phase 2**: Quantum Integration
-- **Phase 3**: Active Learning & Advanced Features
-- **Phase 4**: Validation & Scalability
-
+5. **Start Project**:
+   ```shell
+   streamlit run app.py
+   ```
 ## Requirements
 
 - See `requirements.txt` for full list
 
-
-**Hybrid Quantum-Classical Machine Learning Framework for Drug Discovery**
-
-<!-- [![Phase 1](https://img.shields.io/badge/Phase%201-Complete-brightgreen)]()
-[![Test R²](https://img.shields.io/badge/Test%20R²-0.64-blue)]()
-[![Models](https://img.shields.io/badge/Models-4-orange)]()
-[![Python](https://img.shields.io/badge/Python-3.10+-yellow)]() -->
-
-<!-- ## 🎯 Project Overview
-
-Qrucible combines classical machine learning with quantum computing to accelerate molecular candidate screening and property optimization in early-stage drug discovery. The framework leverages quantum computation's parallelism alongside classical ML's scalability for enhanced molecular discovery. -->
-
-## 🏆 Key Achievements (Phase 1)
-
-- ✅ **70% Performance Improvement** using molecular fingerprints
-- ✅ **Test R² = 0.64** (exceeded target of 0.60)
-- ✅ **9,224 compounds** processed from ChEMBL (EGFR kinase)
-- ✅ **72.2% drug-like** molecules (Lipinski compliant)
-- ✅ **4 trained models** with comprehensive benchmarking
-
-## 📊 Model Performance
-
-| Model | Test R² | RMSE | MAE | Pearson r |
-|-------|---------|------|-----|-----------|
-| RF (Descriptors) | 0.376 | 0.961 | 0.753 | 0.615 |
-| XGBoost (Descriptors) | 0.387 | 0.952 | 0.750 | 0.623 |
-| **RF (Fingerprints)** | **0.640** | **0.728** | **0.553** | **0.804** |
-| **XGBoost (Fingerprints)** | **0.614** | **0.754** | **0.580** | **0.789** |
-| **Ensemble** | **0.637** | **0.731** | **0.559** | **0.804** |
-
-**Best Model:** Random Forest + Morgan Fingerprints
-
-## 🚀 Quick Start
-
-### Prerequisites
-```bash
-Python 3.10+
-conda or venv
-```
-
-### Installation
-
-```bash
-# Clone repository
-git clone <your-repo-url>
-cd qrucible
-
-# Create environment
-conda create -n qrucible_env python=3.10 -y
-conda activate qrucible_env
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### Usage
-
-**1. Download Data:**
-```bash
-python scripts/download_data.py --source chembl --target "EGFR kinase" --limit 30000
-```
-
-**2. Preprocess:**
-```bash
-python scripts/run_preprocessing.py
-```
-
-**3. Train Models:**
-```bash
-# Train with descriptors
-python scripts/train_classical.py
-
-# Train with fingerprints (better performance)
-python scripts/train_with_fingerprints.py
-```
-
-**4. Generate Report:**
-```bash
-python scripts/generate_final_report.py
-```
-
-## 🏗️ Project Structure
-
-```
-qrucible/
-├── src/                    # Source code
-│   ├── data/              # Data loading & preprocessing
-│   ├── features/          # Feature engineering
-│   ├── models/            # ML models (classical & quantum)
-│   ├── explainability/    # SHAP, LIME
-│   └── utils/             # Utilities
-├── scripts/               # Executable scripts
-├── notebooks/             # Jupyter notebooks
-├── data/                  # Datasets
-├── results/               # Models, figures, reports
-└── config/                # Configuration files
-```
-
-## 🔬 Features
-
-### Phase 1 (Complete)
-- ✅ Data acquisition from ChEMBL, BindingDB, ZINC
-- ✅ Molecular preprocessing & standardization
-- ✅ 2D molecular descriptors (RDKit)
-- ✅ Morgan & MACCS fingerprints
-- ✅ Random Forest & XGBoost models
-- ✅ Ensemble learning
-- ✅ Model explainability (feature importance)
-- ✅ Drug-likeness filtering (Lipinski)
-
-### Phase 2 (In Progress)
-- 🔄 VQE for ground-state energy
-- 🔄 QAOA for molecular optimization
-- 🔄 Quantum kernels
-- 🔄 Hybrid quantum-classical workflow
-- 🔄 Active learning loop
-
-### Phase 3 (Planned)
-- ⏳ Federated quantum learning
-- ⏳ Quantum generative models
-- ⏳ Web deployment (Streamlit)
+---
 
 ## 📈 Results
-
 ### Data Statistics
 - **Source:** ChEMBL EGFR Kinase inhibitors
 - **Downloaded:** 16,449 compounds
@@ -201,62 +272,22 @@ qrucible/
 - Prediction plots: `results/figures/`
 - Model comparison: `results/figures/model_comparison.png`
 
-## 🛠️ Tech Stack
+---
 
-**Classical ML:**
-- scikit-learn
-- XGBoost
-- PyTorch (optional)
+**Status:** Version 3 completed ✅ | Version 4 Phase 1 In Progress 🔄
 
-**Cheminformatics:**
-- RDKit
-- Morgan fingerprints
-- MACCS keys
+%% **Last Updated:** 2025-10-12 %%
 
-**Quantum (Phase 2):**
-- Qiskit
-- Qiskit Nature
-- PennyLane
+%% **Performance:** Test R² = 0.64 | Pearson r = 0.804 %%
 
-**Visualization:**
-- Matplotlib
-- Seaborn
-- Plotly
-
-## 📚 Documentation
-
-- [Phase 1 Report](PHASE1_REPORT.md)
-- [Setup Guide](GETTING_STARTED.md)
-- [Notebook Guide](VSCode_Notebook_Setup.md)
-- [Next Steps](NEXT_STEPS.md)
-
-## 🎓 Key Insights
-
-**Most Important Features:**
-1. Molecular Weight (25%)
-2. TPSA - Topological Polar Surface Area (21%)
-3. LogP - Lipophilicity (20%)
-4. Rotatable Bonds (9%)
-5. Hydrogen Donors (9%)
-
-**Fingerprints > Descriptors:**
-- Fingerprints capture molecular structure better
-- 70% improvement in prediction accuracy
-- Essential for similarity-based predictions
-
-## 🔮 Roadmap
-
-- [x] Phase 1: Classical ML Pipeline (Complete)
-- [ ] Phase 2: Quantum Integration (In Progress)
-- [ ] Phase 3: Advanced Features & Deployment
-- [ ] Phase 4: Validation & Scaling
+---
 
 ## 🤝 Contributing
 
 This is a research project. For questions or collaboration:
 - Open an issue
 - Submit a pull request
-- Contact: vdixit2505@gmail.com
+- Contact: vdixit2505@gmail.com | rajhansdhruv@gmail.com
 
 ## 📄 License
 
@@ -277,17 +308,4 @@ For issues or questions:
 
 ---
 
-**Status:** Phase 1 Complete ✅ | Phase 2 In Progress 🔄
-
-**Last Updated:** 2025-10-12
-
-**Performance:** Test R² = 0.64 | Pearson r = 0.804
-
-## License
-
-MIT License
-
-## Contact
-
-For questions or collaboration, please open an issue.
 
